@@ -1,0 +1,20 @@
+﻿@model EventEase.Models.Venue
+@{
+    ViewData["Title"] = "Delete Venue";
+}
+<h2>Delete Venue</h2>
+<hr />
+<div class="alert alert-warning"><strong>Are you sure?</strong> Cannot delete a venue with active bookings.</div>
+<dl class="row">
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">@Model.VenueName</dd>
+    <dt class="col-sm-3">Location</dt>
+    <dd class="col-sm-9">@Model.Location</dd>
+    <dt class="col-sm-3">Capacity</dt>
+    <dd class="col-sm-9">@Model.Capacity</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="VenueId" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

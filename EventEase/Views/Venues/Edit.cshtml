@@ -1,0 +1,52 @@
+﻿@model EventEase.Models.Venue
+@{
+    ViewData["Title"] = "Edit Venue";
+}
+<h2>Edit Venue</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VenueId" />
+            <div class="mb-3">
+                <label asp-for="VenueName" class="form-label"></label>
+                <input asp-for="VenueName" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Location" class="form-label"></label>
+                <input asp-for="Location" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Capacity" class="form-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Current Image</label><br />
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" style="width:150px;height:100px;object-fit:cover;" class="mb-2" />
+                    <br />
+ }
+                else
+                {
+                    <span class="text-muted d-block mb-1">No image uploaded yet</span>
+                }
+                <input type="hidden" asp-for="ImageUrl" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Upload New Image (optional)</label>
+                <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                <small class="text-muted">Leave blank to keep current image</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

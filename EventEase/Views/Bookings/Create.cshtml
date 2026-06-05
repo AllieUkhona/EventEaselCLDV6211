@@ -1,0 +1,43 @@
+﻿@model EventEase.Models.Booking
+@{
+    ViewData["Title"] = "New Booking";
+}
+<h2>Create New Booking</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="All" class="alert alert-danger"
+                 style="display:@(ViewData.ModelState.ErrorCount > 0 ? "block" : "none")"></div>
+            <div class="mb-3">
+                <label asp-for="ClientName" class="form-label"></label>
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="BookingDate" class="form-label"></label>
+                <input asp-for="BookingDate" class="form-control" type="datetime-local" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="EventId" class="form-label">Event</label>
+                <select asp-for="EventId" class="form-select" asp-items="ViewBag.EventId">
+                    <option value="">-- Select an Event --</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="VenueId" class="form-label">Venue</label>
+                <select asp-for="VenueId" class="form-select" asp-items="ViewBag.VenueId">
+                    <option value="">-- Select a Venue --</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Create Booking</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

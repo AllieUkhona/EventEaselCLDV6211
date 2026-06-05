@@ -1,0 +1,28 @@
+﻿@model EventEase.Models.Booking
+@{
+    ViewData["Title"] = "Booking Details";
+}
+<h2>Booking Details</h2>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">Booking ID</dt>
+    <dd class="col-sm-9">@Model.BookingId</dd>
+    <dt class="col-sm-3">Client</dt>
+    <dd class="col-sm-9">@Model.ClientName</dd>
+    <dt class="col-sm-3">Booking Date</dt>
+    <dd class="col-sm-9">@Model.BookingDate.ToString("dd MMM yyyy HH:mm")</dd>
+    <dt class="col-sm-3">Event</dt>
+    <dd class="col-sm-9">@Model.Event?.EventName</dd>
+    <dt class="col-sm-3">Event Type</dt>
+    <dd class="col-sm-9">@Model.Event?.EventType?.TypeName</dd>
+    <dt class="col-sm-3">Event Date</dt>
+    <dd class="col-sm-9">@Model.Event?.EventDate.ToString("dd MMM yyyy")</dd>
+    <dt class="col-sm-3">Venue</dt>
+    <dd class="col-sm-9">@Model.Venue?.VenueName</dd>
+    <dt class="col-sm-3">Location</dt>
+    <dd class="col-sm-9">@Model.Venue?.Location</dd>
+    <dt class="col-sm-3">Capacity</dt>
+    <dd class="col-sm-9">@Model.Venue?.Capacity</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.BookingId" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to Bookings</a>
